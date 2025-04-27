@@ -16,13 +16,32 @@ Else
  
 Program:
 
-//type your code here
+
+```
+#include <stdio.h>
+struct vaccine {
+    int age;
+    char name[20];
+} e;
+
+int main() {
+    printf("Enter age and name: ");
+    scanf("%d %s", &e.age, e.name);
+    printf("Age: %d\n", e.age);
+    printf("Name: %s\n", e.name);
+    if (e.age <= 6) {
+        printf("Eligibility: No\n");
+    } else {
+        printf("Eligibility: Yes\n");
+    }
+    return 0;
+}
+```
 
 
 Output:
 
-//paste your output here
-
+![image](https://github.com/user-attachments/assets/53034823-e3f7-47e4-b698-eca5c71d5477)
 
 Result:
 Thus, the program is verified successfully. 
@@ -44,7 +63,27 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+struct Numbers
+{
+    int a, b;
+};
+struct Numbers processNumbers(struct Numbers num) 
+{
+    struct Numbers result;
+    result.a = num.a + num.b;
+    return result;
+}
+int main()
+{
+    struct Numbers num, result;
+    scanf("%d %d", &num.a, &num.b);
+    result = processNumbers(num);
+    printf("Sum = %d\n", result.a);
+    return 0;
+}
+```
 
 
 
@@ -52,8 +91,7 @@ Program:
 Output:
 
 
-//paste your output here
-
+![image](https://github.com/user-attachments/assets/87af45b7-d1f7-460e-8eca-0e2dddf58909)
 
 
 
@@ -86,24 +124,33 @@ Use scanf to input the file name into the name array.
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+int main()
+{
+    char filename[50];
+    FILE *p;
+    scanf("%s",filename);
+    p=fopen(filename,"w");
+    if(p==NULL)
+    {
+        printf("Error in creating the file!\n");
+        return 1;
+    }
+    printf("%s File Created Successfully\n",filename);
+    printf("%s File Opened\n",filename);
+    fclose(p);
+    printf("%s File Closed\n",filename);
+    return 0;
+}
+```
 
 
 
 
 Output:
 
-
-//paste your output here
-
-
-
-
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/194a9095-1445-49d6-ab8f-89bb752c6413)
 
 
 Result:
@@ -133,7 +180,35 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+int main() 
+{
+    char filename[100],text[100];
+    int n;
+    FILE *p;
+    scanf("%s", filename);
+    p = fopen(filename, "w");
+    if (p == NULL) 
+    {
+        printf("Error in creating the file!\n");
+        return 1;
+    }
+    printf("%s Opened\n", filename);
+    scanf("%d", &n);
+    getchar(); 
+    for (int i = 0; i < n; i++) 
+    {
+        fgets(text, sizeof(text), stdin);
+        fputs(text, p);
+    }
+    printf("Data added Successfully\n");
+    fclose(p);
+    return 0;
+}
+```
+
+
 
 
 
@@ -141,12 +216,7 @@ Program:
 Output:
 
 
-//paste your output here
-
-
-
-
-
+![image](https://github.com/user-attachments/assets/b34420e1-7ca9-4e25-a80c-f8f63b992036)
 
 Result:
 Thus, the program is verified successfully
@@ -187,7 +257,36 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct
+{
+    char subject[50];
+    int marks;
+}student;
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    student *subjects=(student *)malloc(n *sizeof(student));
+    if(subjects==NULL)
+    {
+        printf("Memory allocation failed");
+        return 1;
+    }
+    for(i=0;i<n;i++)
+    {
+        scanf("%s %d",subjects[i].subject,&subjects[i].marks);
+    }
+    for(i=0;i<n;i++)
+    {
+        printf("%s  %d\n",subjects[i].subject,subjects[i].marks);
+    }
+    free(subjects);
+    return 0;
+}
+```
 
 
 
@@ -195,11 +294,7 @@ Program:
 Output:
 
 
-//paste your output here
-
-
-
-
+![image](https://github.com/user-attachments/assets/21daa7e3-ca02-4d3d-be88-b863b47f830e)
 
 
 Result:
