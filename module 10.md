@@ -9,14 +9,42 @@ Algorithm:
 4.	Call the search function and perform other linked list operations as needed.
  
 Program:
-
-//type your code here
-
+```
+struct Node
+{
+char data;
+struct Node *next;
+}*head;
+void search(char data)
+{
+struct Node *temp;
+temp=head;
+int loc=1,flag=0;
+while(temp!=NULL)
+{
+if(temp->data == data)
+{
+flag=1;
+break;
+}
+else{
+temp=temp->next;
+loc++;
+}
+}
+if(flag==0)
+{
+printf("Item not found");
+}
+else
+{
+printf("item %c found at location %d",data,loc);
+}
+}
+```
 Output:
 
-//paste your output here
-
-
+![image](https://github.com/user-attachments/assets/39cb8d5f-c387-4449-a548-9d606e4fb428)
 
 Result:
 Thus, the program to search a given element in the given linked list is verified successfully.
@@ -33,12 +61,35 @@ Algorithm:
 4.	Call the insert function and perform other linked list operations as needed.
  
 Program:
-
-//type your code here
-
+```
+struct Node{
+float data;
+struct Node *next;
+}*head;
+void insert(float data)
+{
+struct Node *newnode,*temp;
+newnode=(struct Node *)malloc(sizeof(struct Node));
+newnode->data=data;
+newnode->next=NULL;
+if(head==NULL)
+{
+head=newnode;
+}
+else
+{
+temp=head;
+while(temp->next != NULL)
+{
+temp=temp->next;
+}
+temp->next=newnode;
+}
+}
+```
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/06556e38-79cd-4737-a743-b1dea0577a47)
 
  
 Result:
@@ -57,12 +108,27 @@ Algorithm:
 4.	Move to the next node by updating the temp pointer to point to the next node (temp = temp->next).
  
 Program:
+```
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    float data;
+}*head;
 
-//type your code here
-
+void display()
+{
+   struct Node*temp;
+   temp=head;
+   while(temp!=NULL){
+       printf("%.2f\n",temp->data);
+       temp=temp->next;
+   }   
+}
+```
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/fad62b9e-50d9-4d94-8279-99f2ceda3c23)
 
 
 Result:
@@ -82,12 +148,47 @@ Algorithm:
 5.	Set the new node's prev pointer to the last node and update the last node's next pointer to the new node.
  
 Program:
+```
+struct Node
+{
+    struct Node *prev;
+    struct Node *next;
+    int data;
+}*head;
 
-//type your code here
-
+void insert(int data)
+{
+    struct Node*n=(struct Node*)malloc(sizeof(struct Node));
+    struct Node *temp;
+    if(n==NULL){
+        printf("UNDERFLOW\n");
+    }
+    else{
+        if(head==NULL){
+            n->data=data;
+            n->next=NULL;
+            n->prev=NULL;
+            head=n;
+            return;
+        }
+        else{
+            temp=head;
+            while(temp->next!=NULL){
+                temp=temp->next;
+            }
+            n->data=data;
+            n->next=NULL;
+            n->prev=temp;
+            temp->next=n;
+        }
+    }
+    
+    
+}
+```
 Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/15f6a131-abfc-4915-8dad-5fa0228f2310)
 
 
 Result:
@@ -124,15 +225,28 @@ o	If the element is not found in any node, print a message indicating the elemen
 
 
 Program:
-
-//type your code here
-
+```
+struct Node{
+float data;
+struct Node *next;
+}*head;
+void delete()
+{
+struct Node *temp;
+if(head==NULL){
+printf("List is empty");
+}
+else{
+temp=head;
+head=temp->next;
+free(temp);
+printf("Node deleted from the begining ...\n");
+}
+}
+```
 Output:
 
-//paste your output here
-
-
-
+![image](https://github.com/user-attachments/assets/66320857-dd84-4e9b-a105-c89c2a892c21)
 
 
 Result:
