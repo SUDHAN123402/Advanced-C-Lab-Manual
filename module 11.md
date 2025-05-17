@@ -12,10 +12,26 @@ Algorithm:
 5.	Call the max_of_four function with the input integers and store the result in the greater variable
  
 Program:
-//type your code here
-
+```
+#include <stdio.h>
+int max_of_four(int a, int b, int c, int d) {
+int max = a;
+if(b > max) max = b;
+if(c > max) max = c;
+if(d > max) max = d;
+return max;
+}
+int main() {
+int n1, n2, n3, n4, greater;
+printf("Enter four numbers: ");
+scanf("%d %d %d %d", &n1, &n2, &n3, &n4);
+greater = max_of_four(n1, n2, n3, n4);
+printf("The greatest number is: %d\n", greater);
+return 0;
+}
+```
 Output:
-//paste your output here
+![image](https://github.com/user-attachments/assets/9c403225-dadc-4f98-aaa3-7a454f87b91d)
 
 Result:
 Thus, the program  that create a function to find the greatest number is verified successfully.
@@ -36,10 +52,39 @@ Algorithm:
 7.	Call the calculate_the_max function with input values.
  
 Program:
-//type your code here
-
+```
+#include <stdio.h>
+void calculate_the_maximum(int n, int k) {
+int max_and = 0, max_or = 0, max_xor = 0;
+for (int i = 1; i <= n; i++) {
+for (int j = i + 1; j <= n; j++) {
+int bitwise_and = i & j;
+int bitwise_or = i | j;
+int bitwise_xor = i ^ j;
+if (bitwise_and < k && bitwise_and > max_and) {
+max_and = bitwise_and;
+}
+if (bitwise_or < k && bitwise_or > max_or) {
+max_or = bitwise_or;
+}
+if (bitwise_xor < k && bitwise_xor > max_xor) {
+max_xor = bitwise_xor;
+}
+}
+}
+printf("%d\n%d\n%d\n", max_and, max_or, max_xor);
+}
+int main() {
+int n, k;
+scanf("%d %d", &n, &k);
+calculate_the_maximum(n, k);
+return 0;
+}
+```
 Output:
-//paste your output here
+
+![image](https://github.com/user-attachments/assets/11efded2-93b7-4134-9b61-980b1fc8173e)
+
 
 Result:
 Thus, the program to print the maximum values for the AND, OR and XOR comparisons
@@ -59,10 +104,61 @@ Algorithm:
 5.	Use a for loop to iterate over the queries.
  
 Program:
-//type your code here
-
+```
+#include <stdio.h>
+#include <stdlib.h>
+int** shelves;
+int* books_per_shelf;
+void add_book(int x, int pages) {
+int count = books_per_shelf[x];
+shelves[x] = (int*)realloc(shelves[x], (count + 1) * sizeof(int));
+shelves[x][count] = pages;
+books_per_shelf[x]++;
+}
+void print_book_pages(int x, int y) {
+printf("%d\n", shelves[x][y]);
+}
+void print_book_count(int x) {
+printf("%d\n", books_per_shelf[x]);
+}
+int main() {
+int n, q;
+scanf("%d", &n);
+scanf("%d", &q);
+shelves = (int**)malloc(n * sizeof(int*));
+books_per_shelf = (int*)calloc(n, sizeof(int));
+for (int i = 0; i < n; i++) {
+shelves[i] = NULL;
+}
+for (int i = 0; i < q; i++) {
+int type;
+scanf("%d", &type);
+if (type == 1) {
+int x, y;
+scanf("%d %d", &x, &y);
+add_book(x, y);
+}
+else if (type == 2) {
+int x, y;
+scanf("%d %d", &x, &y);
+print_book_pages(x, y);
+}
+else if (type == 3) {
+int x;
+scanf("%d", &x);
+print_book_count(x);
+}
+}
+for (int i = 0; i < n; i++) {
+free(shelves[i]);
+}
+free(shelves);
+free(books_per_shelf);
+return 0;
+}
+```
 Output:
-//paste your output here
+![image](https://github.com/user-attachments/assets/42e13473-1c5b-4f47-8d22-003714b17d35)
 
 
 Result:
@@ -86,10 +182,24 @@ Algorithm:
 
 
 Program:
-//type your code here
-
+```
+#include <stdio.h>
+int main() {
+int n, sum = 0;
+printf("Enter the number of elements: ");
+scanf("%d", &n);
+int a[n];
+printf("Enter the elements:\n");
+for(int i = 0; i < n; i++) {
+scanf("%d", &a[i]);
+sum += a[i];
+}
+printf("Sum of array elements: %d\n", sum);
+return 0;
+}
+```
 Output:
-//paste your output here
+![image](https://github.com/user-attachments/assets/3b1b9862-eb98-4a2b-9208-9e0bfeb337a9)
 
  
 
@@ -120,10 +230,29 @@ o	If a character is not a space, it may belong to a word. If it's the first non-
 
 
 Program:
-//type your code here
-
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+int main() {
+char sentence[1000];
+int count = 0, inWord = 0;
+printf("Enter a sentence: ");
+fgets(sentence, sizeof(sentence), stdin);
+for(int i = 0; sentence[i] != '\0'; i++) {
+if(!isspace(sentence[i]) && inWord == 0) {
+inWord = 1;
+count++;
+} else if(isspace(sentence[i])) {
+inWord = 0;
+}
+}
+printf("Number of words: %d\n", count);
+return 0;
+}
+```
 Output:
-//paste your output here
+![image](https://github.com/user-attachments/assets/62a4c450-8da1-43e6-b8dc-947806e9e4e7)
 
 
 
